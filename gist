@@ -1,0 +1,50 @@
+#!/usr/bin/env ys-0
+source <(curl '-sL' getys.org/run) "$@" :
+
+# Create a GitHub Gist from a list of files or from stdin
+
+api-url =: 'https://api.github.com/gists'
+
+re-stdin =: /^-(\.\w{1,8})?$/
+
+defn main(*files):
+  api-token =: api-token()
+
+  file-map =:
+    reduce _ {} (files || ['-']):
+      fn(map file):
+        m =: file =~ re-stdin
+        name =: m.if("stdin$(m.1)" file:fs-filename)
+        content =: m.if('/dev/stdin' file):read
+        merge map: +
+          {name {:content content}}
+
+  request =::
+    :headers:: +{:Authorization "token $api-token"}
+    :body: !:json/dump
+      files:: file-map
+
+  response =: http/post(api-url request)
+
+  when-not 200 <= response.status <= 201:
+    die: "Gist request failed:\n\n$(response.body)"
+
+  say: json/load(response.body).html_url
+
+defn api-token():
+  api-token-file =: ENV.GIST_API_TOKEN_FILE |||
+    "$(ENV.HOME)/.gist-api-token"
+  chomp:
+    cond:
+      fs-f(api-token-file): api-token-file:read
+      ENV.GIST_API_TOKEN: ENV.GIST_API_TOKEN
+      else:
+        resp =:
+          sh:: |
+            bash -c '
+              echo -n "Enter your GitHub API Token: " >/dev/tty
+              read -r -s token </dev/tty
+              echo $token
+            '
+        say: ''
+        resp: .out
