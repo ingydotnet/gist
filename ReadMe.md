@@ -8,8 +8,11 @@ A command-line tool for creating GitHub Gists from files or stdin.
 
 ```bash
 $ gist file1 file2
+https://gist.github.com/ingydotnet/7b7558f0c05a093120d7289322b54576
 $ cat file3 | gist
+https://gist.github.com/ingydotnet/...
 $ cat file4 | gist file5 file6 -
+https://gist.github.com/ingydotnet/...
 ```
 
 
