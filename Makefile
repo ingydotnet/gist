@@ -1,7 +1,7 @@
 M := .cache/makes
 $(shell [ -d $M ] || ( git clone -q https://github.com/makeplus/makes $M))
 
-VERSION := 0.1.1
+VERSION := 0.1.2
 FILE := gist
 
 include $M/init.mk
