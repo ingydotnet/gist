@@ -24,7 +24,19 @@ It supports creating gists from files or stdin input.
 
 ## Installation
 
-The tool is written in YAMLScript and requires the [YAMLScript runtime](
+There are a few different ways to install `gist`.
+
+
+### Install from a binary
+
+The `gist` tool is released as a standalone binary for most common operating
+systems.
+See [gist releases](https://github.com/ingydotnet/gist/releases).
+
+
+### Install with `make install`
+
+The `gist` tool is written in YAMLScript and runs with the [YAMLScript runtime](
 https://yamlscript.org/install).
 
 To install using the Makefile:
@@ -38,6 +50,11 @@ YAMLScript if not already present.
 
 Alternatively, you can manually add `/path/to/gist/bin` to your `PATH`
 environment variable.
+
+
+### Install with `go install`
+
+Coming soon...
 
 
 ## Usage

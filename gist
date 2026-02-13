@@ -1,7 +1,7 @@
 #!/usr/bin/env ys-0
 source <(curl '-sL' getys.org/run) "$@" :
 
-VERSION =: '0.1.0'
+VERSION =: '0.1.1'
 
 # Create a GitHub Gist from a list of files or from stdin
 
