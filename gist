@@ -1,6 +1,8 @@
 #!/usr/bin/env ys-0
 source <(curl '-sL' getys.org/run) "$@" :
 
+VERSION =: '0.1.0'
+
 # Create a GitHub Gist from a list of files or from stdin
 
 api-url =: 'https://api.github.com/gists'
@@ -8,6 +10,11 @@ api-url =: 'https://api.github.com/gists'
 re-stdin =: /^-(\.\w{1,8})?$/
 
 defn main(*files):
+  when files:first == '--version':
+    say: |
+      gist version $VERSION
+    exit: 0
+
   api-token =: api-token()
 
   file-map =:
