@@ -1,4 +1,4 @@
-module github.com/gloathub/go
+module github.com/ingydotnet/gist/go
 
 go 1.24
 

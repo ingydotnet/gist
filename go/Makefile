@@ -9,7 +9,7 @@ include $M/go.mk
 include $M/clean.mk
 include $M/shell.mk
 
-BINARY := go
+BINARY := gist
 GO-SUM := go.sum
 
 MAKES-CLEAN := \
@@ -22,7 +22,7 @@ default:: build
 build: $(BINARY)
 
 $(BINARY): $(GO-SUM)
-	go build -o $(BINARY) .
+	go build -o $(BINARY) ./cmd/gist
 
 $(GO-SUM): $(GO)
 	go mod tidy

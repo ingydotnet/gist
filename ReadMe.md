@@ -42,19 +42,23 @@ https://yamlscript.org/install).
 To install using the Makefile:
 
 ```bash
-$ make install PREFIX=/usr/local
+$ make install PREFIX=~/.local
 ```
 
 This will install the `gist` command to `$PREFIX/bin/` and automatically install
 YAMLScript if not already present.
 
-Alternatively, you can manually add `/path/to/gist/bin` to your `PATH`
+Alternatively, you can just manually add `/path/to/gist` to your `PATH`
 environment variable.
 
 
 ### Install with `go install`
 
-Coming soon...
+If you have Go installed, you can install `gist` directly:
+
+    $ go install github.com/ingydotnet/gist/go/cmd/gist@latest
+
+This installs the `gist` binary to your `$GOPATH/bin` directory.
 
 
 ## Usage
@@ -86,7 +90,7 @@ https://gist.github.com/you-sir/a755020d3eac8f82759232bf17b7223c
 The tool requires a GitHub API token for authentication.
 You can provide it in one of these ways:
 
-1. Place your token in `~/.gist-api-token` (default)
+1. Place your token in `~/.gist-api-token`
 2. Set the `GIST_API_TOKEN` environment variable
 3. Place your token in a file named by `GIST_API_TOKEN_FILE` variable
 4. Enter it interactively when prompted
