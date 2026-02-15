@@ -288,6 +288,8 @@ func LoadNS() {
 	sym_cond := lang.NewSymbol("cond")
 	sym_cond_DASH__GT_ := lang.NewSymbol("cond->")
 	sym_cond_DASH__GT__GT_ := lang.NewSymbol("cond->>")
+	sym_cond_DASH_lets := lang.NewSymbol("cond-lets")
+	sym_condf := lang.NewSymbol("condf")
 	sym_condp := lang.NewSymbol("condp")
 	sym_conj := lang.NewSymbol("conj")
 	sym_conj_BANG_ := lang.NewSymbol("conj!")
@@ -353,6 +355,8 @@ func LoadNS() {
 	sym_ensure := lang.NewSymbol("ensure")
 	sym_ensure_DASH_reduced := lang.NewSymbol("ensure-reduced")
 	sym_enumeration_DASH_seq := lang.NewSymbol("enumeration-seq")
+	sym_eprint := lang.NewSymbol("eprint")
+	sym_eprintln := lang.NewSymbol("eprintln")
 	sym_eq := lang.NewSymbol("eq")
 	sym_err := lang.NewSymbol("err")
 	sym_error_DASH_handler := lang.NewSymbol("error-handler")
@@ -466,6 +470,7 @@ func LoadNS() {
 	sym_identical_QMARK_ := lang.NewSymbol("identical?")
 	sym_identity := lang.NewSymbol("identity")
 	sym_if_DASH_let := lang.NewSymbol("if-let")
+	sym_if_DASH_lets := lang.NewSymbol("if-lets")
 	sym_if_DASH_not := lang.NewSymbol("if-not")
 	sym_if_DASH_some := lang.NewSymbol("if-some")
 	sym_ifn_QMARK_ := lang.NewSymbol("ifn?")
@@ -880,6 +885,7 @@ func LoadNS() {
 	sym_when_PLUS_ := lang.NewSymbol("when+")
 	sym_when_DASH_first := lang.NewSymbol("when-first")
 	sym_when_DASH_let := lang.NewSymbol("when-let")
+	sym_when_DASH_lets := lang.NewSymbol("when-lets")
 	sym_when_DASH_not := lang.NewSymbol("when-not")
 	sym_when_DASH_some := lang.NewSymbol("when-some")
 	sym_while := lang.NewSymbol("while")
@@ -1948,6 +1954,13 @@ func LoadNS() {
 		v := srcNS.Mappings().ValAt(sym_first)
 		if vr, ok := v.(*lang.Var); ok {
 			ns.Refer(sym_first, vr)
+		}
+	}
+	{ // refer clojure.core/condf as condf
+		srcNS := lang.FindOrCreateNamespace(sym_clojure_DOT_core)
+		v := srcNS.Mappings().ValAt(sym_condf)
+		if vr, ok := v.(*lang.Var); ok {
+			ns.Refer(sym_condf, vr)
 		}
 	}
 	{ // refer clojure.core/qualified-symbol? as qualified-symbol?
@@ -3616,6 +3629,13 @@ func LoadNS() {
 			ns.Refer(sym_inc_PLUS_, vr)
 		}
 	}
+	{ // refer clojure.core/when-lets as when-lets
+		srcNS := lang.FindOrCreateNamespace(sym_clojure_DOT_core)
+		v := srcNS.Mappings().ValAt(sym_when_DASH_lets)
+		if vr, ok := v.(*lang.Var); ok {
+			ns.Refer(sym_when_DASH_lets, vr)
+		}
+	}
 	{ // refer clojure.core/unchecked-negate as unchecked-negate
 		srcNS := lang.FindOrCreateNamespace(sym_clojure_DOT_core)
 		v := srcNS.Mappings().ValAt(sym_unchecked_DASH_negate)
@@ -4512,6 +4532,13 @@ func LoadNS() {
 			ns.Refer(sym_set_DASH_agent_DASH_send_DASH_executor_BANG_, vr)
 		}
 	}
+	{ // refer clojure.core/eprintln as eprintln
+		srcNS := lang.FindOrCreateNamespace(sym_clojure_DOT_core)
+		v := srcNS.Mappings().ValAt(sym_eprintln)
+		if vr, ok := v.(*lang.Var); ok {
+			ns.Refer(sym_eprintln, vr)
+		}
+	}
 	{ // refer clojure.core/get as get
 		srcNS := lang.FindOrCreateNamespace(sym_clojure_DOT_core)
 		v := srcNS.Mappings().ValAt(sym_get)
@@ -4797,6 +4824,13 @@ func LoadNS() {
 		v := srcNS.Mappings().ValAt(sym_long_DASH_array)
 		if vr, ok := v.(*lang.Var); ok {
 			ns.Refer(sym_long_DASH_array, vr)
+		}
+	}
+	{ // refer clojure.core/eprint as eprint
+		srcNS := lang.FindOrCreateNamespace(sym_clojure_DOT_core)
+		v := srcNS.Mappings().ValAt(sym_eprint)
+		if vr, ok := v.(*lang.Var); ok {
+			ns.Refer(sym_eprint, vr)
 		}
 	}
 	{ // refer clojure.core/unchecked-remainder-int as unchecked-remainder-int
@@ -5821,6 +5855,13 @@ func LoadNS() {
 			ns.Refer(sym_the_DASH_ns, vr)
 		}
 	}
+	{ // refer clojure.core/cond-lets as cond-lets
+		srcNS := lang.FindOrCreateNamespace(sym_clojure_DOT_core)
+		v := srcNS.Mappings().ValAt(sym_cond_DASH_lets)
+		if vr, ok := v.(*lang.Var); ok {
+			ns.Refer(sym_cond_DASH_lets, vr)
+		}
+	}
 	{ // refer clojure.core// as /
 		srcNS := lang.FindOrCreateNamespace(sym_clojure_DOT_core)
 		v := srcNS.Mappings().ValAt(sym__SLASH_)
@@ -6822,6 +6863,13 @@ func LoadNS() {
 			ns.Refer(sym_exit, vr)
 		}
 	}
+	{ // refer clojure.core/if-lets as if-lets
+		srcNS := lang.FindOrCreateNamespace(sym_clojure_DOT_core)
+		v := srcNS.Mappings().ValAt(sym_if_DASH_lets)
+		if vr, ok := v.(*lang.Var); ok {
+			ns.Refer(sym_if_DASH_lets, vr)
+		}
+	}
 	{ // refer ys.std/triml as triml
 		srcNS := lang.FindOrCreateNamespace(sym_ys_DOT_std)
 		v := srcNS.Mappings().ValAt(sym_triml)
@@ -6849,7 +6897,7 @@ func LoadNS() {
 	ns.AddAlias(sym_json, lang.FindOrCreateNamespace(sym_ys_DOT_json))
 	// ARGS
 	{
-		tmp0 := sym_ARGS.WithMeta(lang.NewMap(kw_dynamic, true, kw_file, "gist/core.glj", kw_line, int(11), kw_column, int(6), kw_end_DASH_line, int(11), kw_end_DASH_column, int(19), kw_ns, lang.FindOrCreateNamespace(sym_gist_DOT_core))).(*lang.Symbol)
+		tmp0 := sym_ARGS.WithMeta(lang.NewMap(kw_dynamic, true, kw_file, "gist/core.glj", kw_line, int(12), kw_column, int(6), kw_end_DASH_line, int(12), kw_end_DASH_column, int(19), kw_ns, lang.FindOrCreateNamespace(sym_gist_DOT_core))).(*lang.Symbol)
 		var_gist_DOT_core_ARGS = ns.InternWithValue(tmp0, lang.NewVector(), true)
 		if tmp0.Meta() != nil {
 			var_gist_DOT_core_ARGS.SetMeta(tmp0.Meta().(lang.IPersistentMap))
@@ -6858,7 +6906,7 @@ func LoadNS() {
 	}
 	// ARGV
 	{
-		tmp0 := sym_ARGV.WithMeta(lang.NewMap(kw_dynamic, true, kw_file, "gist/core.glj", kw_line, int(10), kw_column, int(6), kw_end_DASH_line, int(10), kw_end_DASH_column, int(19), kw_ns, lang.FindOrCreateNamespace(sym_gist_DOT_core))).(*lang.Symbol)
+		tmp0 := sym_ARGV.WithMeta(lang.NewMap(kw_dynamic, true, kw_file, "gist/core.glj", kw_line, int(11), kw_column, int(6), kw_end_DASH_line, int(11), kw_end_DASH_column, int(19), kw_ns, lang.FindOrCreateNamespace(sym_gist_DOT_core))).(*lang.Symbol)
 		var_gist_DOT_core_ARGV = ns.InternWithValue(tmp0, lang.NewVector(), true)
 		if tmp0.Meta() != nil {
 			var_gist_DOT_core_ARGV.SetMeta(tmp0.Meta().(lang.IPersistentMap))
@@ -6867,7 +6915,7 @@ func LoadNS() {
 	}
 	// CWD
 	{
-		tmp0 := sym_CWD.WithMeta(lang.NewMap(kw_dynamic, true, kw_file, "gist/core.glj", kw_line, int(17), kw_column, int(6), kw_end_DASH_line, int(17), kw_end_DASH_column, int(18), kw_ns, lang.FindOrCreateNamespace(sym_gist_DOT_core))).(*lang.Symbol)
+		tmp0 := sym_CWD.WithMeta(lang.NewMap(kw_dynamic, true, kw_file, "gist/core.glj", kw_line, int(18), kw_column, int(6), kw_end_DASH_line, int(18), kw_end_DASH_column, int(18), kw_ns, lang.FindOrCreateNamespace(sym_gist_DOT_core))).(*lang.Symbol)
 		var_gist_DOT_core_CWD = ns.InternWithValue(tmp0, "", true)
 		if tmp0.Meta() != nil {
 			var_gist_DOT_core_CWD.SetMeta(tmp0.Meta().(lang.IPersistentMap))
@@ -6876,7 +6924,7 @@ func LoadNS() {
 	}
 	// DIR
 	{
-		tmp0 := sym_DIR.WithMeta(lang.NewMap(kw_dynamic, true, kw_file, "gist/core.glj", kw_line, int(16), kw_column, int(6), kw_end_DASH_line, int(16), kw_end_DASH_column, int(18), kw_ns, lang.FindOrCreateNamespace(sym_gist_DOT_core))).(*lang.Symbol)
+		tmp0 := sym_DIR.WithMeta(lang.NewMap(kw_dynamic, true, kw_file, "gist/core.glj", kw_line, int(17), kw_column, int(6), kw_end_DASH_line, int(17), kw_end_DASH_column, int(18), kw_ns, lang.FindOrCreateNamespace(sym_gist_DOT_core))).(*lang.Symbol)
 		var_gist_DOT_core_DIR = ns.InternWithValue(tmp0, "/home/ingy/src/gist", true)
 		if tmp0.Meta() != nil {
 			var_gist_DOT_core_DIR.SetMeta(tmp0.Meta().(lang.IPersistentMap))
@@ -6885,7 +6933,7 @@ func LoadNS() {
 	}
 	// ENV
 	{
-		tmp0 := sym_ENV.WithMeta(lang.NewMap(kw_dynamic, true, kw_file, "gist/core.glj", kw_line, int(12), kw_column, int(6), kw_end_DASH_line, int(12), kw_end_DASH_column, int(18), kw_ns, lang.FindOrCreateNamespace(sym_gist_DOT_core))).(*lang.Symbol)
+		tmp0 := sym_ENV.WithMeta(lang.NewMap(kw_dynamic, true, kw_file, "gist/core.glj", kw_line, int(13), kw_column, int(6), kw_end_DASH_line, int(13), kw_end_DASH_column, int(18), kw_ns, lang.FindOrCreateNamespace(sym_gist_DOT_core))).(*lang.Symbol)
 		var_gist_DOT_core_ENV = ns.InternWithValue(tmp0, lang.NewMap(), true)
 		if tmp0.Meta() != nil {
 			var_gist_DOT_core_ENV.SetMeta(tmp0.Meta().(lang.IPersistentMap))
@@ -6894,7 +6942,7 @@ func LoadNS() {
 	}
 	// FILE
 	{
-		tmp0 := sym_FILE.WithMeta(lang.NewMap(kw_dynamic, true, kw_file, "gist/core.glj", kw_line, int(15), kw_column, int(6), kw_end_DASH_line, int(15), kw_end_DASH_column, int(19), kw_ns, lang.FindOrCreateNamespace(sym_gist_DOT_core))).(*lang.Symbol)
+		tmp0 := sym_FILE.WithMeta(lang.NewMap(kw_dynamic, true, kw_file, "gist/core.glj", kw_line, int(16), kw_column, int(6), kw_end_DASH_line, int(16), kw_end_DASH_column, int(19), kw_ns, lang.FindOrCreateNamespace(sym_gist_DOT_core))).(*lang.Symbol)
 		var_gist_DOT_core_FILE = ns.InternWithValue(tmp0, "/home/ingy/src/gist/gist", true)
 		if tmp0.Meta() != nil {
 			var_gist_DOT_core_FILE.SetMeta(tmp0.Meta().(lang.IPersistentMap))
@@ -6903,7 +6951,7 @@ func LoadNS() {
 	}
 	// NS
 	{
-		tmp0 := sym_NS.WithMeta(lang.NewMap(kw_dynamic, true, kw_file, "gist/core.glj", kw_line, int(13), kw_column, int(6), kw_end_DASH_line, int(13), kw_end_DASH_column, int(17), kw_ns, lang.FindOrCreateNamespace(sym_gist_DOT_core))).(*lang.Symbol)
+		tmp0 := sym_NS.WithMeta(lang.NewMap(kw_dynamic, true, kw_file, "gist/core.glj", kw_line, int(14), kw_column, int(6), kw_end_DASH_line, int(14), kw_end_DASH_column, int(17), kw_ns, lang.FindOrCreateNamespace(sym_gist_DOT_core))).(*lang.Symbol)
 		var_gist_DOT_core_NS = ns.InternWithValue(tmp0, nil, true)
 		if tmp0.Meta() != nil {
 			var_gist_DOT_core_NS.SetMeta(tmp0.Meta().(lang.IPersistentMap))
@@ -6912,7 +6960,7 @@ func LoadNS() {
 	}
 	// RUN
 	{
-		tmp0 := sym_RUN.WithMeta(lang.NewMap(kw_dynamic, true, kw_file, "gist/core.glj", kw_line, int(14), kw_column, int(6), kw_end_DASH_line, int(14), kw_end_DASH_column, int(18), kw_ns, lang.FindOrCreateNamespace(sym_gist_DOT_core))).(*lang.Symbol)
+		tmp0 := sym_RUN.WithMeta(lang.NewMap(kw_dynamic, true, kw_file, "gist/core.glj", kw_line, int(15), kw_column, int(6), kw_end_DASH_line, int(15), kw_end_DASH_column, int(18), kw_ns, lang.FindOrCreateNamespace(sym_gist_DOT_core))).(*lang.Symbol)
 		var_gist_DOT_core_RUN = ns.InternWithValue(tmp0, lang.NewMap(), true)
 		if tmp0.Meta() != nil {
 			var_gist_DOT_core_RUN.SetMeta(tmp0.Meta().(lang.IPersistentMap))
@@ -6921,15 +6969,15 @@ func LoadNS() {
 	}
 	// VERSION
 	{
-		tmp0 := sym_VERSION.WithMeta(lang.NewMap(kw_file, "gist/core.glj", kw_line, int(21), kw_column, int(6), kw_end_DASH_line, int(21), kw_end_DASH_column, int(12), kw_ns, lang.FindOrCreateNamespace(sym_gist_DOT_core))).(*lang.Symbol)
-		var_gist_DOT_core_VERSION = ns.InternWithValue(tmp0, "0.1.2", true)
+		tmp0 := sym_VERSION.WithMeta(lang.NewMap(kw_file, "gist/core.glj", kw_line, int(22), kw_column, int(6), kw_end_DASH_line, int(22), kw_end_DASH_column, int(12), kw_ns, lang.FindOrCreateNamespace(sym_gist_DOT_core))).(*lang.Symbol)
+		var_gist_DOT_core_VERSION = ns.InternWithValue(tmp0, "0.1.3", true)
 		if tmp0.Meta() != nil {
 			var_gist_DOT_core_VERSION.SetMeta(tmp0.Meta().(lang.IPersistentMap))
 		}
 	}
 	// api-url
 	{
-		tmp0 := sym_api_DASH_url.WithMeta(lang.NewMap(kw_file, "gist/core.glj", kw_line, int(22), kw_column, int(6), kw_end_DASH_line, int(22), kw_end_DASH_column, int(12), kw_ns, lang.FindOrCreateNamespace(sym_gist_DOT_core))).(*lang.Symbol)
+		tmp0 := sym_api_DASH_url.WithMeta(lang.NewMap(kw_file, "gist/core.glj", kw_line, int(23), kw_column, int(6), kw_end_DASH_line, int(23), kw_end_DASH_column, int(12), kw_ns, lang.FindOrCreateNamespace(sym_gist_DOT_core))).(*lang.Symbol)
 		var_gist_DOT_core_api_DASH_url = ns.InternWithValue(tmp0, "https://api.github.com/gists", true)
 		if tmp0.Meta() != nil {
 			var_gist_DOT_core_api_DASH_url.SetMeta(tmp0.Meta().(lang.IPersistentMap))
@@ -6937,7 +6985,7 @@ func LoadNS() {
 	}
 	// re-stdin
 	{
-		tmp0 := sym_re_DASH_stdin.WithMeta(lang.NewMap(kw_file, "gist/core.glj", kw_line, int(23), kw_column, int(6), kw_end_DASH_line, int(23), kw_end_DASH_column, int(13), kw_ns, lang.FindOrCreateNamespace(sym_gist_DOT_core))).(*lang.Symbol)
+		tmp0 := sym_re_DASH_stdin.WithMeta(lang.NewMap(kw_file, "gist/core.glj", kw_line, int(24), kw_column, int(6), kw_end_DASH_line, int(24), kw_end_DASH_column, int(13), kw_ns, lang.FindOrCreateNamespace(sym_gist_DOT_core))).(*lang.Symbol)
 		var_gist_DOT_core_re_DASH_stdin = ns.InternWithValue(tmp0, regexp4.MustCompile("^-(\\.\\w{1,8})?$"), true)
 		if tmp0.Meta() != nil {
 			var_gist_DOT_core_re_DASH_stdin.SetMeta(tmp0.Meta().(lang.IPersistentMap))
@@ -6945,7 +6993,7 @@ func LoadNS() {
 	}
 	// -main
 	{
-		tmp0 := sym__DASH_main.WithMeta(lang.NewMap(kw_file, "gist/core.glj", kw_line, int(80), kw_column, int(7), kw_end_DASH_line, int(80), kw_end_DASH_column, int(11), kw_arglists, lang.NewList(lang.NewVector(sym__AMP_, sym_argv)), kw_ns, lang.FindOrCreateNamespace(sym_gist_DOT_core))).(*lang.Symbol)
+		tmp0 := sym__DASH_main.WithMeta(lang.NewMap(kw_file, "gist/core.glj", kw_line, int(81), kw_column, int(7), kw_end_DASH_line, int(81), kw_end_DASH_column, int(11), kw_arglists, lang.NewList(lang.NewVector(sym__AMP_, sym_argv)), kw_ns, lang.FindOrCreateNamespace(sym_gist_DOT_core))).(*lang.Symbol)
 		var tmp1 lang.FnFunc
 		tmp1 = lang.NewFnFunc(func(args ...any) any {
 			switch len(args) {
@@ -6992,7 +7040,7 @@ func LoadNS() {
 	}
 	// api-token
 	{
-		tmp0 := sym_api_DASH_token.WithMeta(lang.NewMap(kw_file, "gist/core.glj", kw_line, int(60), kw_column, int(7), kw_end_DASH_line, int(60), kw_end_DASH_column, int(15), kw_arglists, lang.NewList(lang.NewVector()), kw_ns, lang.FindOrCreateNamespace(sym_gist_DOT_core))).(*lang.Symbol)
+		tmp0 := sym_api_DASH_token.WithMeta(lang.NewMap(kw_file, "gist/core.glj", kw_line, int(61), kw_column, int(7), kw_end_DASH_line, int(61), kw_end_DASH_column, int(15), kw_arglists, lang.NewList(lang.NewVector()), kw_ns, lang.FindOrCreateNamespace(sym_gist_DOT_core))).(*lang.Symbol)
 		var tmp1 lang.FnFunc
 		tmp1 = lang.NewFnFunc(func(args ...any) any {
 			checkArity(args, 0)
@@ -7081,7 +7129,7 @@ func LoadNS() {
 	}
 	// main
 	{
-		tmp0 := sym_main.WithMeta(lang.NewMap(kw_file, "gist/core.glj", kw_line, int(25), kw_column, int(7), kw_end_DASH_line, int(25), kw_end_DASH_column, int(10), kw_arglists, lang.NewList(lang.NewVector(sym__AMP_, sym_files)), kw_ns, lang.FindOrCreateNamespace(sym_gist_DOT_core))).(*lang.Symbol)
+		tmp0 := sym_main.WithMeta(lang.NewMap(kw_file, "gist/core.glj", kw_line, int(26), kw_column, int(7), kw_end_DASH_line, int(26), kw_end_DASH_column, int(10), kw_arglists, lang.NewList(lang.NewVector(sym__AMP_, sym_files)), kw_ns, lang.FindOrCreateNamespace(sym_gist_DOT_core))).(*lang.Symbol)
 		var tmp1 lang.FnFunc
 		tmp1 = lang.NewFnFunc(func(args ...any) any {
 			switch len(args) {
@@ -7171,7 +7219,7 @@ func LoadNS() {
 						} // end let
 						return tmp23
 					})
-					tmp21 := lang.NewMap(kw_file, "gist/core.glj", kw_line, int(35), kw_column, int(5), kw_end_DASH_line, int(44), kw_end_DASH_column, int(49))
+					tmp21 := lang.NewMap(kw_file, "gist/core.glj", kw_line, int(36), kw_column, int(5), kw_end_DASH_line, int(45), kw_end_DASH_column, int(49))
 					tmp22, err := lang.WithMeta(tmp20, tmp21.(lang.IPersistentMap))
 					if err != nil {
 						panic(err)
@@ -7188,7 +7236,7 @@ func LoadNS() {
 							tmp27 = v26
 						} else {
 							tmp28 := lang.NewVector("-")
-							tmp29 := lang.NewMap(kw_file, "gist/core.glj", kw_line, int(46), kw_column, int(15), kw_end_DASH_line, int(46), kw_end_DASH_column, int(19))
+							tmp29 := lang.NewMap(kw_file, "gist/core.glj", kw_line, int(47), kw_column, int(15), kw_end_DASH_line, int(47), kw_end_DASH_column, int(19))
 							tmp30, err := lang.WithMeta(tmp28, tmp29.(lang.IPersistentMap))
 							if err != nil {
 								panic(err)
