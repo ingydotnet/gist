@@ -2,7 +2,10 @@ module github.com/ingydotnet/gist/go
 
 go 1.24
 
-require github.com/gloathub/glojure v0.6.5-rc4
+require (
+	github.com/gloathub/gloat/ys/pkg v0.1.1
+	github.com/gloathub/glojure v0.6.5-rc5
+)
 
 require (
 	bitbucket.org/pcastools/hash v1.0.5 // indirect

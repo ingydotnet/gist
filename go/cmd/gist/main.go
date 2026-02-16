@@ -6,15 +6,7 @@ import (
 	"github.com/gloathub/glojure/pkg/glj"
 	"github.com/gloathub/glojure/pkg/lang"
 	_ "github.com/ingydotnet/gist/go/pkg/gist/core"
-	_ "github.com/ingydotnet/gist/go/pkg/yamlscript/common"
-	_ "github.com/ingydotnet/gist/go/pkg/yamlscript/util"
-	_ "github.com/ingydotnet/gist/go/pkg/ys/fs"
-	_ "github.com/ingydotnet/gist/go/pkg/ys/http"
-	_ "github.com/ingydotnet/gist/go/pkg/ys/ipc"
-	_ "github.com/ingydotnet/gist/go/pkg/ys/json"
-	_ "github.com/ingydotnet/gist/go/pkg/ys/std"
-	_ "github.com/ingydotnet/gist/go/pkg/ys/dwim"
-	_ "github.com/ingydotnet/gist/go/pkg/ys/v0"
+	_ "github.com/gloathub/gloat/ys/pkg/all"
 )
 
 func main() {

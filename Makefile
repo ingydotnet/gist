@@ -3,6 +3,7 @@ $(shell [ -d $M ] || ( git clone -q https://github.com/makeplus/makes $M))
 
 VERSION := 0.1.4
 FILE := gist
+GLOAT-VERSION := v0.1.1
 GLOAT-RELEASE-WITH-GO-DIRECTORY := 1
 
 include $M/init.mk
