@@ -6970,7 +6970,7 @@ func LoadNS() {
 	// VERSION
 	{
 		tmp0 := sym_VERSION.WithMeta(lang.NewMap(kw_file, "gist/core.glj", kw_line, int(22), kw_column, int(6), kw_end_DASH_line, int(22), kw_end_DASH_column, int(12), kw_ns, lang.FindOrCreateNamespace(sym_gist_DOT_core))).(*lang.Symbol)
-		var_gist_DOT_core_VERSION = ns.InternWithValue(tmp0, "0.1.4", true)
+		var_gist_DOT_core_VERSION = ns.InternWithValue(tmp0, "0.1.5", true)
 		if tmp0.Meta() != nil {
 			var_gist_DOT_core_VERSION.SetMeta(tmp0.Meta().(lang.IPersistentMap))
 		}
